@@ -1,4 +1,3 @@
-
 <?php 
 // Connexion à la base de données
 try
@@ -36,4 +35,3 @@ while ($donnees = $reponse->fetch())
 }
 $reponse->closeCursor(); // Termine le traitement de la requête
 }
-?>

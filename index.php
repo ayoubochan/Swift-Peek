@@ -1,5 +1,8 @@
-<?php 
+<?php
+
 include 'controllers.php';
 
+home();
+
 detail();
-?>
+
