@@ -3,3 +3,6 @@
 include 'controllers.php';
 
 home();
+
+detail();
+
