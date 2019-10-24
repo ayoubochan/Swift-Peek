@@ -26,6 +26,11 @@
 
         <input type="submit" name="onEnvoi" value="Connexion">
       </form>
+      
+      <!--Le formulaire pour la déconnexion-->
+      <form id="fermer" name="fermer" method="POST" action="">
+        <input type="submit" id="soumettre" value="Se déconnecter <?php echo verifyUserData($db) ?>" />
+      </form>
 
     </fieldset>
 </section>

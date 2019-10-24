@@ -45,6 +45,16 @@ function verifyUserData($db){
                         $_SESSION['pseudo'] = $monPseudo;
                           
                     }
+                    
+                    //La déconnexion
+                    if(isset($_SESSION['id']) && isset($_SESSION['pseudo'])){
+                        $connectOupas = '';
+                        $connectOupas = 'visibility: visible';
+                        return $connectOupas;
+                    }else{
+                        $connectOupas = 'visibility: hidden';
+                        return $connectOupas;
+                    }
                 }else{
                     //Vérifie les érreurs de validité dans le champs Pseudo/Mail
                     $mssgErr = '';
