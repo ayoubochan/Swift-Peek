@@ -8,6 +8,7 @@
 <body>
 
   <?php
+  include 'vues/components/Back-button.php';
   include'components/comment_section.php';
   ?>
   
