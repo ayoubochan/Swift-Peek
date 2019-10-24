@@ -1,7 +1,12 @@
 <?php
+
 include 'controllers.php';
 
-home();
-
-?>
-
+switch(true) {
+  case !isset($_REQUEST['i']):
+    home();
+    break;
+  case isset($_REQUEST['i']):
+    detail();
+    break;
+}

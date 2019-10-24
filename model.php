@@ -1,3 +1,4 @@
+
 <?php
 //Veux être sur d'être connecté à la base de donnée
 try{
@@ -67,6 +68,31 @@ function verifyUserData($db){
 
 }
 
+//Commentaire dans la bdd
+    function sendComment($db){
+    if(isset($_POST['sendcomment'])){
+        if(isset($_POST['addpseudo']) && isset($_POST['addcomment'])){
+            // Insertion du message à l'aide d'une requête préparée
+    $req = $db->prepare('INSERT INTO comments (pseudo, comment) VALUES(?, ?)');
+    $req->execute(array($_POST['addpseudo'], $_POST['addcomment']));
+        
+        }
+        
+        }
+    }
+    //Montre les commentaire
+    function showComment($db){
+    //Récupere toutes les infos de la TABLE comment et les affichent
+    $reponse = $db->query('SELECT * FROM comments ORDER BY date DESC');
+    while ($donnees = $reponse->fetch())
+    {
+    echo htmlspecialchars($donnees['pseudo'])."<br>";
+    echo htmlspecialchars($donnees['date'])."<br>"; 
+    echo htmlspecialchars($donnees['film'])."<br>";
+    echo htmlspecialchars($donnees['comment'])."<br><br>"; 
 
+    }
+    $reponse->closeCursor(); // Termine le traitement de la requête
+    }
 
 ?>
