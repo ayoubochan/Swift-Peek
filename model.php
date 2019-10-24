@@ -46,7 +46,7 @@ function verifyUserData($db){
                           
                     }
                 }else{
-                    //Condition qui vérifie les érreurs de validité dans le champs Pseudo/Mail
+                    //Vérifie les érreurs de validité dans le champs Pseudo/Mail
                     $mssgErr = '';
                     $mssgErr = 'Your id or password is not valid';
                     return $mssgErr;
@@ -55,7 +55,7 @@ function verifyUserData($db){
 
 
         }else{
-            //Condition qui vérifie l'erreur des champs vide
+            //Vérifie l'erreur des champs vide
             $mssgErr = 'invalid input';
             return $mssgErr;
             //echo 'invalid input';
