@@ -9,7 +9,8 @@ catch(Exception $e)
 {
 	// En cas d'erreur, on affiche un message et on arrête tout
         die('Erreur : '.$e->getMessage());
-} 
+}
+
 function sendComment($db){
 if(isset($_POST['sendcomment'])){
 	if(isset($_POST['addpseudo']) && isset($_POST['addcomment'])){
