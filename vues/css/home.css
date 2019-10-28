@@ -1,4 +1,63 @@
+/*Le boutton qui permet d'accèder au form connexion*/
+.idenTification{
+    width: 10%;
+    height: 2rem;
+    margin-top: 1rem;
+    margin-left: 80%;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    
+}
 
+/*Formulaire connexion*/
+.inscrConncet{
+    width: 250px;
+    height: 200px;
+    margin-top: 1rem;
+    margin-left: 80%;
+    margin-bottom: 2rem;
+    display: none;
+    
+}
+
+/*Fieldset*/
+.inscrConncet .toutLeform{
+    border: none;
+    background-color: #e2e2e2;
+    width: 250px;
+    height: 200px;
+}
+
+/*Input pseudo et password*/
+.lePseudo, .lePass{
+    width: 97%;
+    height: 2rem;
+    border: none;
+    background-color: #000;
+    color: #fff;
+}
+
+/*boutton connect et deconnect*/
+.leNnvoi, .laDeconnect{
+    width: 48%;
+    height: 2rem;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+/*leMessage*/
+.leMessage{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+
+
+/*MovieList*/
 #movieList {
   list-style: none;
   height: 80vh;

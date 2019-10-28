@@ -46,35 +46,32 @@ function verifyUserData($db){
             if(!empty($_POST['monPseudo'])  && !empty($_POST['monMotDepass'])){
             
                 //Mot de passe crypté
-                $monMotDepass = sha1($_POST['monMotDepass']);
+                //$monMotDepass = sha1($_POST['monMotDepass']);
 
                 //les caractères spéciaux en entités HTML pour le pseudo
                 $monPseudo = htmlspecialchars($_POST['monPseudo']);
-                //echo $monPseudo;
 
-                //Requete à cet enfoiré de Mysql
+                //Requete à  Mysql
                 $req = $db->prepare("select * from users 
                                         where pseudo = :monPseudo 
-                                        or email =:monMail 
-                                        and password = :monMotDepass");
+                                        or email =:monMail");
 
-                $req->execute(array('monPseudo' => $monPseudo, 'monMail' => $monPseudo,  'monMotDepass' => $monMotDepass));
+                $req->execute(array('monPseudo' => $monPseudo, 'monMail' => $monPseudo));
                 $resultat = $req->fetch();
                 $req->closeCursor();
-                //print_r( $resultat);
 
                 //Vérifier que l'utilisateur à entré les bonnes données
-                $motDepassCorrect = password_verify($monMotDepass, $resultat['password']);
+                //$motDepassCorrect = password_verify($monMotDepass, $resultat['password']);
+                
 
                 //Ouverture de la session SI le mot de passe est correct.
-                if($resultat){
-                    //echo 'Vous êtes connecté';
-                    if($motDepassCorrect){
-                        session_start();
-                        $_SESSION['id'] = $_POST['id'];
-                        $_SESSION['pseudo'] = $monPseudo;
-                          
-                    }
+                if(($_POST['monMotDepass']) == $resultat['password']){
+                     //session_start();
+                     //$_SESSION['id'] = $resultat['id'];
+                     $_SESSION['pseudo'] = $monPseudo;
+                     return $_SESSION['pseudo'].' '.','.'You are connected.';
+                    
+                   
                 }else{
                     //Vérifie les érreurs de validité dans le champs Pseudo/Mail
                     $mssgErr = '';
@@ -83,19 +80,29 @@ function verifyUserData($db){
    
                 }
 
+                //Le boutton déconnexion
+                if(isset($_POST['onSedeconnect'])){
+                    session_destroy();
+                    if(empty($_SESSION['pseudo'])){
+                    $ilEstDeconnect = 'You are disconnected';
+                    return $ilEstDeconnect;
+                    var_dump($ilEstDeconnect);
+                    }
+                }
 
         }else{
-            //Vérifie l'erreur des champs vide
+            //Message erreur si les champs sont vide
             $mssgErr = 'invalid input';
             return $mssgErr;
-            //echo 'invalid input';
 
-            
-            
         }
     }
 
 }
+
+
+
+
 
 //Commentaire dans la bdd
     function sendComment($db){
@@ -125,3 +132,4 @@ function verifyUserData($db){
     }
 
 ?>
+
