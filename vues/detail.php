@@ -8,7 +8,7 @@
 <body>
 
   <?php
-  include'components/comment_section.php';
+  include 'components/comment_section.php';
   ?>
   
   
