@@ -1,1 +1,3 @@
-<button type="button" id="backButton" onclick="history.back();">Back into the past</button>
+<form method="post" action="index.php">
+<button type="submit" id="backButton">Back Into The Past</button>
+</form>

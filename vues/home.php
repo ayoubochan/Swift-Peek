@@ -18,6 +18,15 @@
   <ul id="movieList"></ul>
 
 <script>
+/*
+console.log(new Date("02/25/2019").getTime());
+console.log(new Date("02/26/2019").getTime());
+var tab = [3,1,2];
+ tab.sort(function(a,b){
+   console.log(parseFloat(a)-parseFloat(b));
+ })*/
+
+   
   let limit = 0
   let page = 1
   let movies = []
@@ -32,11 +41,12 @@
 
   function getMovies(page) {
     
-    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=b53ba6ff46235039543d199b7fdebd90&sort_by=release_date&language=en-US&page=${page}`)
+    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=b53ba6ff46235039543d199b7fdebd90&language=en-US&page=${page}`)
     .then(response  =>  response.json())
     .then(data  => {
-      movies = movies.concat(data.results)
+      movies = movies.concat(data.results); 
       showMovies(movies, data.page)
+      sortingDate(movies)
     })
   }
   getMovies()
@@ -63,7 +73,15 @@
     })
     limit += 20
   }
-  
+
+  triage = [];
+  function sortingDate(movies) {
+    
+    
+      triage = movies.sort(parseInt(movies[0].release_date.substring(0, 4))); 
+      console.log(triage)
+  }
+
   </script>
 </body>
 </html>
