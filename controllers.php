@@ -11,6 +11,7 @@ function home(){
 }
 
 function detail(){
+  
   include 'model.php';
   include 'vues/detail.php';
   //Envoi et montre les détails

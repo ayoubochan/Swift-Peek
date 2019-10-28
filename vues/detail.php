@@ -8,11 +8,12 @@
 <body>
 
   <?php
+
   include 'components/comment_section.php';
+
+  include 'vues/components/Back-button.php';
+
   ?>
   
-  
-  
-
 </body>
 </html>

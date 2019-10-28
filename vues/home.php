@@ -32,7 +32,7 @@
 
   function getMovies(page) {
     
-    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=b53ba6ff46235039543d199b7fdebd90&language=en-US&page=${page}`)
+    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=b53ba6ff46235039543d199b7fdebd90&sort_by=release_date&language=en-US&page=${page}`)
     .then(response  =>  response.json())
     .then(data  => {
       movies = movies.concat(data.results)
