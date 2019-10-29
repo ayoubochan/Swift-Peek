@@ -188,9 +188,9 @@
       console.log(donnee);
       let prod = donnee.crew.filter(elem => elem.job === 'Producer')[0].name;
       producer.textContent = "Producer : "+prod;
-      let act = donnee.cast.filter(elem => elem.order = '0')[0].name; 
+      /*let act = donnee.cast.filter(elem => elem.order = '0')[0].name; 
       let act2 = donnee.cast.filter(elem => elem.order = '1')[1].name;
-      actor.textContent="Actors : "act+act2;
+      actor.textContent="Actors : "act+act2;*/
     });
     }
     getCredit();
