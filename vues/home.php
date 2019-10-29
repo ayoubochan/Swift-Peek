@@ -12,6 +12,7 @@
   <ul id="movieList"></ul>
 
 <script>
+  let backdrop = ''
   let limit = 0
   let page = 1
   let movies = []
@@ -30,29 +31,32 @@
     .then(response  =>  response.json())
     .then(data  => {
       movies = movies.concat(data.results)
-      showMovies(movies, data.page)
+      showMovies(movies)
     })
   }
   getMovies()
 
-  function showMovies(movies, moviePage) {
+  function showMovies(movies) {
     console.log(movies)
     const movieList = movies.slice(limit).map((elem, index) => {
-      const img = document.createElement('img')
-      const li = document.createElement('li')
-      list.appendChild(li)
-      li.appendChild(img)
-      img.src = `https://image.tmdb.org/t/p/w200/${elem.poster_path}`
+      if(elem.poster_path !== null) {
+        const img = document.createElement('img')
+        const li = document.createElement('li')
+        list.appendChild(li)
+        li.appendChild(img)
+        img.src = `https://image.tmdb.org/t/p/w200/${elem.poster_path}`
+        backdrop = elem.backdrop_path
 
-      li.onclick = () => {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              window.location.href = `${window.location}?i=${elem.id}`
-            }
-        };
-        xmlhttp.open("GET", "index.php?i=" + elem.id, true);
-        xmlhttp.send();
+        li.onclick = () => {
+          var xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                window.location.href = `${window.location}?i=${elem.id}`
+              }
+          };
+          xmlhttp.open("GET", "index.php?i=" + elem.id, true);
+          xmlhttp.send();
+        }
       }
     })
     limit += 20
