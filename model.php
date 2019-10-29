@@ -81,8 +81,8 @@ function verifyUserData($db){
     if(isset($_POST['sendcomment'])){
         if(isset($_POST['addpseudo']) && isset($_POST['addcomment'])){
             // Insertion du message à l'aide d'une requête préparée
-    $req = $db->prepare('INSERT INTO comments (pseudo, comment) VALUES(?, ?)');
-    $req->execute(array($_POST['addpseudo'], $_POST['addcomment']));
+    $req = $db->prepare('INSERT INTO comments (pseudo, comment,movie) VALUES(?, ?,?)');
+    $req->execute(array($_POST['addpseudo'], $_POST['addcomment'], $_REQUEST['i']));
         
         }
         
@@ -90,17 +90,21 @@ function verifyUserData($db){
     }
     //Montre les commentaire
     function showComment($db){
-    //Récupere toutes les infos de la TABLE comment et les affichent
-    $reponse = $db->query('SELECT * FROM comments ORDER BY date DESC');
+    
+    //Récupere toutes les infos de la TABLE comments avec une requete préparée (laisser le prepare, ne pas mettre de query sinon ca fonctionne pas) et va ensuite les afficher en fonction du film
+    $reponse = $db->prepare('SELECT * FROM comments WHERE movie = ? ORDER BY date DESC');
+    $reponse->execute(array($_REQUEST['i'])); // fait en sorte que les commentaires s'affichent en fonction du film
+    
     while ($donnees = $reponse->fetch())
     {
     echo htmlspecialchars($donnees['pseudo'])."<br>";
     echo htmlspecialchars($donnees['date'])."<br>"; 
-    echo htmlspecialchars($donnees['film'])."<br>";
+    echo htmlspecialchars($donnees['movie'])."<br>";
     echo htmlspecialchars($donnees['comment'])."<br><br>"; 
 
     }
     $reponse->closeCursor(); // Termine le traitement de la requête
+
     }
 
 ?>
