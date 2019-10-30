@@ -5,3 +5,17 @@
     <p id="commentButton"><input type="submit" name="sendcomment" value="Send your commentary" id=sendcomment/></p>
   </form>
 </section>
+<style>
+  .ajoutcomms{
+    border: 2px solid darkred;
+    border-radius : 10px;
+    background-color: rgb(34, 33, 33);
+    color : white;
+    font-size : 15pt;
+    padding-left : 15px;
+}
+#addpseudo{
+  background-color : rgb(50,50,50);
+  border : 2px solid rgb(20,30,30);
+}
+  </style>

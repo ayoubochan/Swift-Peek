@@ -1,7 +1,10 @@
 /* Section Commentaires */
 .ajoutcomms{
-    border: 2px solid  darkred;
-    background-color: rgb(26, 25, 25);
+    border: 5px solid  darkred;
+    border-radius : 50%;
+    -moz-border-radius : 50%;
+    -webkit-border-radius : 50%;
+    background-color: rgb(25, 25, 25);
 }
 /* Commentary Form */
 #sendCommentaryForm{
