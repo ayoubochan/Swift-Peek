@@ -18,40 +18,74 @@
   <ul id="movieList"></ul>
 
 <script>
-  let backdrop = ''
   let limit = 0
-  let page = 1
+  let saveLimit = 1
+  let page = 0
   let movies = []
   const list = document.querySelector('#movieList')
 
-  list.onscroll = (e) => {
-    if((list.scrollTop + list.offsetHeight) >= (list.scrollHeight - 500)) {
-      page ++
-      getMovies(page)
-    }
+  function handleApi() {
+    page ++
+    callApi(page)
+    if (page === 500) clearInterval(delay);
   }
+  let delay = setInterval(handleApi, 300);
 
-  function getMovies(page) {
-    
-    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=b53ba6ff46235039543d199b7fdebd90&language=en-US&page=${page}`)
-    .then(response  =>  response.json())
-    .then(data  => {
-      movies = movies.concat(data.results)
-      showMovies(movies)
-    })
-  }
-  getMovies()
+  const fetchWithTimeout = (uri, options = {}, time = 5000) => {
+    const controller = new AbortController()
+    const config = { ...options, signal: controller.signal }
+    const timeout = setTimeout(() => {
+      controller.abort()
+    }, time)
+    return fetch(uri, config)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`${response.status}: ${response.statusText}`)
+        }
+        return response
+      })
+      .catch(error => {
+        if (error.name === 'AbortError') {
+          throw new Error('Response timed out')
+        }
+        throw new Error(error.message)
+      })
+    }
+
+    function callApi() {
+      fetchWithTimeout(
+      `https://api.themoviedb.org/3/discover/movie?api_key=b53ba6ff46235039543d199b7fdebd90&language=en-US&page=${page}`,
+      { headers: { Accept: 'application/json' } },
+      500
+      )
+      .then(response => response.json())
+      .then(json => {
+        console.log(json.page)
+        movies = movies.concat(json.results)
+        showMovies(movies)
+        list.onscroll = (e) => {
+          if((list.scrollTop + list.offsetHeight) >= (list.scrollHeight - 500)) {
+            limit += 20
+            showMovies(movies)
+          }
+        }
+      })
+      .catch(error => {
+        console.error(error.message)
+      })
+    }
 
   function showMovies(movies) {
-    console.log(movies)
-    const movieList = movies.slice(limit).map((elem, index) => {
+    
+    if(limit !== saveLimit) {
+      saveLimit = limit
+      const movieList = movies.slice(limit, limit + 20).map((elem, index) => {
       if(elem.poster_path !== null) {
         const img = document.createElement('img')
         const li = document.createElement('li')
         list.appendChild(li)
         li.appendChild(img)
         img.src = `https://image.tmdb.org/t/p/w200/${elem.poster_path}`
-        backdrop = elem.backdrop_path
 
         li.onclick = () => {
           var xmlhttp = new XMLHttpRequest();
@@ -65,7 +99,8 @@
         }
       }
     })
-    limit += 20
+    console.log(movies.slice(limit, limit + 20), 'HERE')
+    }
   }
   
   </script>
