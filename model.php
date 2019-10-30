@@ -108,45 +108,52 @@ function verifyUserData($db){
     }
 
        // partie fred inscription base de donnée 
-    if (isset ($_POST["submit"])){
+    function register($db){
 
-        $pseudo=trim(htmlspecialchars($_POST["pseudo"]));
-        /*$allPseudo=$bdd->query("SELECT pseudo FROM users WHERE pseudo='$pseudo'");
-        while($alllist=$allPseudo->fetch()){
-            if ($pseudo===$alllist){
-                die("trouvez un autre pseudo");
-            }
-           
-        }
-         */
-        $email = trim(htmlspecialchars($_POST["email"]));
-        $password = trim(htmlspecialchars($_POST["password"]));
-        $password2 = trim(htmlspecialchars($_POST["password2"]));
-            
-        }
-    
+        if (isset ($_POST["submit"])){
+
+            $pseudo=trim(htmlspecialchars($_POST["pseudo"]));
+            $allPseudo=$db->query("SELECT pseudo FROM users ");
         
-            if (isset($pseudo) && isset($email) && isset ($password) && isset($password2)){
-    
-                     if ( $password!==$password2 || $pseudo===$alllist ){
-                         echo "les password doivent etre identiques et les pseudo different";
-    
-                     }
-                     else{
-                         $password=md5($password);
-    
-                        $bdd->exec("INSERT INTO users (pseudo, password, email) VALUE('$pseudo','$password','$email')");
-                        echo "inscription reussi";
-    
-                     }
-    
+            while($alllist=$allPseudo->fetch()){
+                if ($pseudo===$alllist["pseudo"]){
+        
+                    die( " choisir un autre pseudo");
+                       
+                }   
+               
+            }
+             
+            $email = trim(htmlspecialchars($_POST["email"]));
+                 $allmaillist=$db->query("SELECT email From users");
+                  while($allmail=$allmaillist->fetch()){
+        
+                      if ($email===$allmail["email"]){
+                          die( "choisir un autre email");
+                      }
+                  }
+             
+            $password = trim(htmlspecialchars($_POST["password"]));
+            $password2 = trim(htmlspecialchars($_POST["password2"]));
+                
+            }    
+              if (isset($pseudo) && isset($email) && isset ($password) && isset($password2)){
+        
+                         if ( $password!==$password2  ){
+                             echo "les password doivent etre identiques ";
+        
+                         }
+                         else{
+                             $password=md5($password);
+        
+                            $db->exec("INSERT INTO users (pseudo, password, email) VALUE('$pseudo','$password','$email')");
+                            echo "inscription reussi";
+        
+                         }
+             }
+        
+        else{
+            echo " completer le formulaire";
         }
-    
-    else{
-        echo " completer le formulaire";
+        
     }
-    
-    
-
-?>
-
