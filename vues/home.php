@@ -14,7 +14,21 @@
     <?php
     include 'components/headerHome.php';
     ?>
+<form method="POST" action="">
+    
+    <p><input type="text" name="pseudo" placeholder ="pseudo" required></p>
+    
+    <p><input type="email" name="email" placeholder="email" required></p>
 
+    <p><input type="password" placeholder="password" name="password" required></p>
+
+    <p><input type="password" placeholder="confirmation password " name="password2" required></p>
+    
+    
+    <p><input type="submit" value="submit" name="submit" /></p>
+
+    </form>
+    
   <ul id="movieList"></ul>
 
 <script>
