@@ -17,7 +17,7 @@ function verifyUserData($db){
             if(!empty($_POST['monPseudo'])  && !empty($_POST['monMotDepass'])){
             
                 //Mot de passe crypté
-                //$monMotDepass = sha1($_POST['monMotDepass']);
+                //$monMotDepass = password_hash($_POST['monMotDepass'],PASSWORD_DEFAULT);
 
                 //les caractères spéciaux en entités HTML pour le pseudo
                 $monPseudo = htmlspecialchars($_POST['monPseudo']);
@@ -71,7 +71,11 @@ function verifyUserData($db){
 
 }
 
-
+//Lien menant vers la page motDepassPerdu
+if(isset($_POST['lostPassWord'])){
+    header('Location: vues/components/motDepassPerdu.php');
+    exit();
+}
 
 
 

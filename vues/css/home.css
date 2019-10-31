@@ -55,6 +55,21 @@
     font-weight: 400;
 }
 
+/*lostPassword*/
+.lostP{
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    background-color: transparent;
+    cursor: pointer;
+    color: teal;
+}
+
+/*Liens de retour vers la page connexion*/
+.retourConnex{
+    border: none;
+    background-color: transparent;
+}
+
 
 
 /*MovieList*/
