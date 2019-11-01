@@ -14,7 +14,12 @@
     <?php
     include 'components/headerHome.php';
     ?>
-
+  <select>
+    <option value="">Tous les genres</option>
+    <option value="28">Action</option>
+    <option value="12">Adventure</option>
+    <option value="16">Animation</option>
+  </select>
   <ul id="movieList"></ul>
 
 <script>
@@ -23,11 +28,27 @@
   let page = 0
   let movies = []
   const list = document.querySelector('#movieList')
+  const genres = document.getElementsByTagName('select')[0]
+  let saveGenre = ''
+
+  function getGenres() {
+    fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=b53ba6ff46235039543d199b7fdebd90&language=en-US')
+    .then(response => response.json())
+    .then(data => {
+      data.genres.map(elem => {
+        const option = document.createElement('option')
+        genres.appendChild(option)
+        option.textContent = elem.name
+        option.value = elem.id
+      })
+    })
+  }
+  getGenres()
 
   function handleApi() {
-    page ++
-    callApi(page)
-    if (page === 500) clearInterval(delay);
+      page ++
+      callApi(page)
+      if(page === 500) clearInterval(delay)
   }
   let delay = setInterval(handleApi, 300);
 
@@ -60,13 +81,29 @@
       )
       .then(response => response.json())
       .then(json => {
-        console.log(json.page)
         movies = movies.concat(json.results)
         showMovies(movies)
+        genres.onchange = () => {
+          saveGenre = genres.options[genres.selectedIndex].value
+          list.innerHTML = ''
+          if(limit > 0) limit = -20
+          else limit = 0
+          saveLimit = 1
+          handleApi()
+        }
         list.onscroll = (e) => {
           if((list.scrollTop + list.offsetHeight) >= (list.scrollHeight - 500)) {
-            limit += 20
-            showMovies(movies)
+            if(saveGenre !== '') {
+              if((json.page * 100 > limit )) {
+                limit += 20
+                showMovies(movies)
+              }
+            } else {
+              if((json.page * 18 > limit )) {
+                limit += 20
+                showMovies(movies)
+              }
+            }
           }
         }
       })
@@ -76,8 +113,9 @@
     }
 
   function showMovies(movies) {
-    
+    console.log(limit, 'limit')
     if(limit !== saveLimit) {
+      (saveGenre == '' ? '' : movies = movies.filter(elem => elem.genre_ids.includes(parseInt(saveGenre))))
       saveLimit = limit
       const movieList = movies.slice(limit, limit + 20).map((elem, index) => {
       if(elem.poster_path !== null) {
@@ -99,7 +137,6 @@
         }
       }
     })
-    console.log(movies.slice(limit, limit + 20), 'HERE')
     }
   }
   
