@@ -31,8 +31,9 @@
 
     <select>
     <option value="">Tous les genres</option>
-    
   </select>
+
+  <input id="search" type="text" placeholder="Title">
     
   <ul id="movieList"></ul>
 
@@ -44,6 +45,8 @@
   const list = document.querySelector('#movieList')
   const genres = document.getElementsByTagName('select')[0]
   let saveGenre = ''
+  const search = document.querySelector('#search')
+  let searchValue = ''
 
   function getGenres() {
     fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=b53ba6ff46235039543d199b7fdebd90&language=en-US')
@@ -97,13 +100,20 @@
       .then(json => {
         movies = movies.concat(json.results)
         showMovies(movies)
+        search.onkeyup = (e) => {
+          list.innerHTML = ''
+          searchValue = e.target.value
+          limit = 0
+          saveLimit = 1
+          if(page === 500)showMovies(movies)
+        }
         genres.onchange = () => {
           saveGenre = genres.options[genres.selectedIndex].value
           list.innerHTML = ''
           if(limit > 0) limit = -20
           else limit = 0
           saveLimit = 1
-          handleApi()
+          if(page === 500)showMovies(movies)
         }
         list.onscroll = (e) => {
           if((list.scrollTop + list.offsetHeight) >= (list.scrollHeight - 500)) {
@@ -122,14 +132,14 @@
         }
       })
       .catch(error => {
-        console.error(error.message)
+        console.error(error.message);
       })
     }
 
   function showMovies(movies) {
-    console.log(limit, 'limit')
     if(limit !== saveLimit) {
-      (saveGenre == '' ? '' : movies = movies.filter(elem => elem.genre_ids.includes(parseInt(saveGenre))))
+      (saveGenre == '' ? '' : movies = movies.filter(elem => elem.genre_ids.includes(parseInt(saveGenre))));
+      (searchValue == '' ? '' : movies = movies.filter(elem => elem.title.toLowerCase().includes(searchValue.toLowerCase())));
       saveLimit = limit
       const movieList = movies.slice(limit, limit + 20).map((elem, index) => {
       if(elem.poster_path !== null) {
@@ -140,6 +150,7 @@
         img.src = `https://image.tmdb.org/t/p/w200/${elem.poster_path}`
 
         li.onclick = () => {
+          search.value = ''
           var xmlhttp = new XMLHttpRequest();
           xmlhttp.onreadystatechange = function() {
               if (this.readyState == 4 && this.status == 200) {
