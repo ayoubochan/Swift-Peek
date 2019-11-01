@@ -7,6 +7,7 @@ function home(){
     
     //Appel de la fonction qui vérifie les entrées de l'utilisateur
     verifyUserData($db);
+    register($db);
 
 }
 

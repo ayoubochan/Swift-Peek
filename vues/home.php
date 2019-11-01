@@ -14,12 +14,26 @@
     <?php
     include 'components/headerHome.php';
     ?>
-  <select>
+<form method="POST" action="">
+    
+    <p><input type="text" name="pseudo" placeholder ="pseudo" required></p>
+    
+    <p><input type="email" name="email" placeholder="email" required></p>
+
+    <p><input type="password" placeholder="password" name="password" required></p>
+
+    <p><input type="password" placeholder="confirmation password " name="password2" required></p>
+    
+    
+    <p><input type="submit" value="submit" name="submit" /></p>
+
+    </form>
+
+    <select>
     <option value="">Tous les genres</option>
-    <option value="28">Action</option>
-    <option value="12">Adventure</option>
-    <option value="16">Animation</option>
+    
   </select>
+    
   <ul id="movieList"></ul>
 
 <script>

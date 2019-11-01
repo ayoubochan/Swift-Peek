@@ -31,6 +31,7 @@
 
         <input type="submit" name="onEnvoi" value="Login" class="leNnvoi">
         <input type="submit" name="onSedeconnect" value="Logout" class="laDeconnect">
+        <input type="submit" name="lostPassWord" value="Forgot your password ?" class="lostP">
       </form>
     </fieldset>
 </section>
@@ -44,9 +45,7 @@
   } else {
     leForm.style.display = "none";
   }
-    //document.getElementById("jeMidentifie").style.display="block";
-    //let leForm = document.querySelectAll(.inscrConncet);
-    //leForm.classList[0].remove(hidden);
+    
   }
   identiFyyourSlef();
 
