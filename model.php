@@ -71,11 +71,6 @@ function verifyUserData($db){
 
 }
 
-
-
-
-
-
 //Commentaire dans la bdd
     function sendComment($db){
     if(isset($_POST['sendcomment'])){
@@ -157,3 +152,4 @@ function verifyUserData($db){
         }
         
     }
+    
