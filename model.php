@@ -156,8 +156,4 @@ if(isset($_POST['lostPassWord'])){
                          }
              }
         
-        else{
-            echo " completer le formulaire";
-        }
-        
     }

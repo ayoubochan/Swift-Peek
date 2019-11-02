@@ -8,34 +8,26 @@
   <link rel="stylesheet" href="vues/css/home.css">
   <title>Document</title>
 </head>
-<body>
+<body id="body">
 
-    <!--AJOUT DE L'INCLUDE PHP-->
-    <?php
+  <?php
     include 'components/headerHome.php';
-    ?>
-<form method="POST" action="">
-    
-    <p><input type="text" name="pseudo" placeholder ="pseudo" required></p>
-    
-    <p><input type="email" name="email" placeholder="email" required></p>
+  ?>
 
-    <p><input type="password" placeholder="password" name="password" required></p>
+  <section>
+    <div class="list-container">
+      <div class="filters">
+        <select>
+        <option value="">Tous les genres</option>
+        </select>
 
-    <p><input type="password" placeholder="confirmation password " name="password2" required></p>
-    
-    
-    <p><input type="submit" value="submit" name="submit" /></p>
-
-    </form>
-
-    <select>
-    <option value="">Tous les genres</option>
-  </select>
-
-  <input id="search" type="text" placeholder="Title">
-    
-  <ul id="movieList"></ul>
+        <input id="search" type="text" placeholder="Title">
+        <img src="assets/search.png">
+      </div>
+        
+      <ul id="movieList"></ul>
+    </div>
+  </section>
 
 <script>
   let limit = 0
@@ -47,6 +39,53 @@
   let saveGenre = ''
   const search = document.querySelector('#search')
   let searchValue = ''
+  const connexion = document.querySelector('.connexion')
+  const formConnexion = document.querySelector('.connexion-container')
+  const formRegister = document.querySelector('.register-container')
+  const switchConnexion = document.querySelector('#switch-connexion')
+  const switchRegister = document.querySelector('#switch-register')
+  let connexionState = true
+  const header = document.querySelector('#header')
+  const body = document.querySelector('#body')
+
+  body.onscroll = () => {
+    body.style.transform = 'translate(0, -50%)'
+    connexion.style.transform = 'translate(0, 100vh)'
+    formConnexion.style.transform = 'translate(0, 100vh)'
+    formRegister.style.transform = 'translate(0, 100vh)'
+  }
+
+  function getBackground() {
+    fetch('https://api.themoviedb.org/3/discover/movie?api_key=b53ba6ff46235039543d199b7fdebd90&language=en-US')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.results)
+      header.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${data.results[0].backdrop_path})`
+    })
+  }
+  getBackground()
+
+  switchConnexion.onclick = () => {
+    formConnexion.style.zIndex = '-1'
+    formRegister.style.zIndex = '3'
+  }
+
+  switchRegister.onclick = () => {
+    formConnexion.style.zIndex = '3'
+    formRegister.style.zIndex = '-1'
+  }
+
+  connexion.onclick = () => {
+    if(connexionState) {
+      formConnexion.style.zIndex = '3'
+      connexionState = false
+    } else {
+      formConnexion.style.zIndex = '-1'
+      formRegister.style.zIndex = '-1'
+      connexionState = true
+    }
+
+  }
 
   function getGenres() {
     fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=b53ba6ff46235039543d199b7fdebd90&language=en-US')
