@@ -37,7 +37,7 @@ function verifyUserData($db){
 
                 //Ouverture de la session SI le mot de passe est correct.
                 if(($_POST['monMotDepass']) == $resultat['password']){
-                     //session_start();
+                     session_start();
                      //$_SESSION['id'] = $resultat['id'];
                      $_SESSION['pseudo'] = $monPseudo;
                      return $_SESSION['pseudo'].' '.','.'You are connected.';
