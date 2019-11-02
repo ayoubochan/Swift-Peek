@@ -37,7 +37,7 @@ function verifyUserData($db){
 
                 //Ouverture de la session SI le mot de passe est correct.
                 if(($_POST['monMotDepass']) == $resultat['password']){
-                     session_start();
+                     //session_start();
                      //$_SESSION['id'] = $resultat['id'];
                      $_SESSION['pseudo'] = $monPseudo;
                      return $_SESSION['pseudo'].' '.','.'You are connected.';
@@ -122,7 +122,7 @@ if(isset($_POST['lostPassWord'])){
             while($alllist=$allPseudo->fetch()){
                 if ($pseudo===$alllist["pseudo"]){
         
-                    die( " choisir un autre pseudo");
+                    
                        
                 }   
                
@@ -133,7 +133,7 @@ if(isset($_POST['lostPassWord'])){
                   while($allmail=$allmaillist->fetch()){
         
                       if ($email===$allmail["email"]){
-                          die( "choisir un autre email");
+                          
                       }
                   }
              
@@ -144,14 +144,13 @@ if(isset($_POST['lostPassWord'])){
               if (isset($pseudo) && isset($email) && isset ($password) && isset($password2)){
         
                          if ( $password!==$password2  ){
-                             echo "les password doivent etre identiques ";
         
                          }
                          else{
                              $password=md5($password);
         
                             $db->exec("INSERT INTO users (pseudo, password, email) VALUE('$pseudo','$password','$email')");
-                            echo "inscription reussi";
+                            
         
                          }
              }
