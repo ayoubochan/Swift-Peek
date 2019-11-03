@@ -13,7 +13,7 @@ if(isset($_POST['resetPass'])){
         die('Erreur : ' .$e->getMessage());
         }
     
-        //$oldPassword = htmlspecialchars($_POST['oldPassword']);
+        
         //Intéroger la base de données
         $req = $db->prepare("select * from users
                               where email = :monMail
@@ -29,20 +29,25 @@ if(isset($_POST['resetPass'])){
             
            $mSgErr = '';
             echo $mSgErr = 'Your email or your oldpassword doesn\'t exist in our database';
-        }
+        }else
 
         //Vérifier si le nouveau mot de passe corresond à la répétition du mot de passe
         if($_POST['neWpassWord'] != $_POST['neWpassWordAgain']){
             echo 'Your new passwords doenst correspond. Try again.';
         }else{
             //Mise à jour de la base des données
+            //password_hash
+            $leNouvoPass = password_hash($_POST['neWpassWord'], PASSWORD_DEFAULT);
+
+
             $req = $db->prepare("update users set password = :neWpassWord where email = :monMail");
-            $req->execute(array('neWpassWord' => $_POST['neWpassWord'], 'monMail' => $_POST['monMail']));
+            $req->execute(array('neWpassWord' => $leNouvoPass, 'monMail' => $_POST['monMail']));
             echo 'You succed to change your password';
+            echo $leNouvoPass;
         }
     
     }else{
-        echo 'Invalid input';
+        $messgDerreur =  'Invalid input';
     }
 
     
@@ -116,18 +121,12 @@ if(isset($_POST['resetMail'])){
                 echo 'Something went wrong, the email was not sent !';
             }
 
-
-            //$to = $_POST['monMail'];
-            //$ubject = 'Recovery lost password';
-            //$body ='Dear'.', '.$to.' '.'here your new password'.' '. generatePassword(). '.'.' '.'Remember to change your new password, for a password you can remember easily.';
-            //mail($to, $ubject, $body);
-
             //Mise à jour de la base des données
             $req = $db->prepare('update users set password = :password
                                 where email = :monMail');
 
             $req->execute(array('password' => $newPassword, 'monMail' => $_POST['monMail']));
-            echo'A new password has been sent to you, check your email.'.'<br>'.' For security, be sure to change it immediatly.';
+            echo 'Check your email.'.'<br>'.' For security, be sure to change it immediatly.';
 ;        }else{
             echo 'Sorry, this email does not exist in our database';
         }
@@ -142,9 +141,6 @@ if(isset($_POST['resetMail'])){
 }
 
 
-
-
-
 ?>
 
 
@@ -154,29 +150,36 @@ if(isset($_POST['resetMail'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="vues/css/recoveryMdp.css">
-    <title>Changermot de passe et Mot de passe perdu</title>
+    <link rel="stylesheet" href="recoveryMdp.css">
+    <title>Changer mot de passe et Mot de passe perdu</title>
 </head>
 <body>
     <!--title1-->
-    <h1>Change your password</h1>
+    <h1 class="leTitre">Change your password</h1>
     <form action="" method="POST">
-        <input type="mail" name="monMail" placeholder="Enter your email">
-        <input type="password" name="oldPassWord" placeholder="Enter your old password">
-        <input type="password" name="neWpassWord" placeholder="Enter a new password">
-        <input type="password" name="neWpassWordAgain" placeholder="Repeat the new pass">
-        <input type="submit" name="resetPass" value="Reset your password">
+        <input type="mail" class="inptMail" name="monMail" placeholder="Enter your email">
+        <input type="password" class="inptoldPwd" name="oldPassWord" placeholder="Enter your old password"><br><br>
+        <input type="password" class="newdPwd" name="neWpassWord" placeholder="Enter a new password">
+        <input type="password" class="rptNewPwd" name="neWpassWordAgain" placeholder="Repeat the new pass"><br><br>
+        <input type="submit" class="leSubMit" name="resetPass" value="Reset your password">
     </form>
 
     <!--title2-->
-    <h1>Forgot your password</h1>
+    <h1 class="leTitre">Forgot your password</h1>
     <form action="" method="POST">
-        <input type="mail" name="monMail" placeholder="Enter your email">
-        <input type="submit" name="resetMail" value="New password">
+        <input type="mail" class="sonMail" name="monMail" placeholder="Enter your email">
+        <input type="submit" class="leSubMitPwd" name="resetMail" value="New password">
     </form>
 
     <form action="" method="POST">
-        <input type="submit" name="reTourAconnexio" value="Back to connexion" class="retourConnex">
+        <a href="../home.php?">Or back to connexion</a>
+        <!--<input type="submit" class="retourConnex" name="reTourAconnexio" value="Or back to connexion">-->
+        <!--Affichage des messages-->
+        <div class="class">
+            <!--Btn reset-->
+        </div>
     </form>
 </body>
 </html>
+
+
