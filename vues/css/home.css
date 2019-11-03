@@ -250,6 +250,10 @@ section {
   height: 30px;
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
+  text-decoration: none;
+  width: 164px;
+  text-align: center;
+  line-height: 30px;
 }
 
 .switch-connexion {

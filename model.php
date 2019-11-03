@@ -73,10 +73,10 @@ function verifyUserData($db){
 }
 
 //Lien menant vers la page motDepassPerdu
-if(isset($_POST['lostPassWord'])){
-    header('Location: vues/components/motDepassPerdu.php');
-    exit();
-}
+// if(isset($_POST['lostPassWord'])){
+//     header('Location: vues/components/motDepassPerdu.php');
+//     exit();
+// }
 
 
 

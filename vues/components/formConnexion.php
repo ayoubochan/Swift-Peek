@@ -8,7 +8,7 @@
     <input class="log-button" type="submit" name="onEnvoi" value="Login" >
     <input class="log-button" type="submit" name="onSedeconnect" value="Logout" >
   </div>
-  <input class="forgot" type="submit" name="lostPassWord" value="Forgot your password ?" >
+  <a href="vues/components/motDepassPerdu.php" class="forgot" name="lostPassWord" >Forgot your password</a>
 </form>
 <button id="switch-connexion" class="switch-connexion">Not registered yet ?</button>
 </div>
