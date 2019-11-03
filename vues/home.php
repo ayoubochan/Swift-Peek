@@ -9,7 +9,7 @@
   <title>Document</title>
 </head>
 <body id="body">
-<a href="AdminPage_Comment.php">To Admin Page Here ! </a>
+<a class="admin" href="AdminPage_Comment.php">Admin</a>
   <?php
     include 'components/headerHome.php';
   ?>
