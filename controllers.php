@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 function home(){
     include 'model.php';
     include 'vues/home.php';
