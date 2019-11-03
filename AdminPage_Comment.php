@@ -82,20 +82,6 @@ $userAdm->closeCursor(); // Termine le traitement de la requête
         echo "";
     }
     ?>
-<style>
-    // Buttons for seeing / unseeing comms or users
-    #commSee, #commStop, #userSee, #UserStop{
-    border : 1px solid black ;
-    border-radius : 5px;
-    background-color : white;
-    color : black;
-    font-family : "Lucida";
-    }
-    // For comments
-    .admforComms{
-        font-family : "Lucida";
-        border : 1px solid black;
-    }
-</style>    
+   
 
 
