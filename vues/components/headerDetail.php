@@ -1,4 +1,9 @@
 <header class="detail-header">
+    <div id="title-container">
+      <p id="title"></p>
+      <div></div>
+    </div>
+    <a href="index.php"><img src="assets/back.png" /></a>
     <div id="background"></div>
     <div id="video-container"><iframe id="video" frameborder="0" allow="autoplay"></iframe></div>
   </header>

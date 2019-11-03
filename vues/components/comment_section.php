@@ -6,8 +6,8 @@ if(isset($_SESSION['pseudo'])){
 ?>
 <section class="ajoutcomms"> 
   <form method="post" id="sendCommentaryForm">
-    <p id="commentAdded"><label>Your Commentary : </label><input type="text" id="addcomment" name="addcomment" placeholder="your commentary here ..."></p>
-    <p id="commentButton"><input type="submit" name="sendcomment" value="Send your commentary" id=sendcomment/></p>
+    <textarea type="text" id="addcomment" name="addcomment" placeholder="New comment"></textarea>
+    <input type="submit" name="sendcomment" value="Send" id="sendcomment"/>
   </form>
 </section>
 <?php 
