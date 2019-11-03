@@ -2,12 +2,8 @@
 <div class="connexion-container">
 <form class="form-connexion" action="" method="POST">
 
-<?php
-    echo "<p>" . verifyUserData($db) . "</p>";
-?>
-
-  <input class="form-input" type="text" name="monPseudo" placeholder="ID" >
-  <input class="form-input" type="password" name="monMotDepass" placeholder="Password" >
+  <input class="form-input" type="text" name="monPseudo" placeholder="ID" required>
+  <input class="form-input" type="password" name="monMotDepass" placeholder="Password" required>
   <div class="log-container">
     <input class="log-button" type="submit" name="onEnvoi" value="Login" >
     <input class="log-button" type="submit" name="onSedeconnect" value="Logout" >

@@ -113,6 +113,7 @@ body::-webkit-scrollbar {
 
 header {
   height: 100vh;
+  background-color: rgb(20, 20, 20);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   position: relative;

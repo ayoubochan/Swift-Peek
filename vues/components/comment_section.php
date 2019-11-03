@@ -1,7 +1,6 @@
 <?php
  
 if(isset($_SESSION['pseudo'])){
-  echo "you are connected : ".$_SESSION['pseudo'];
 
 ?>
 <section class="ajoutcomms"> 
