@@ -155,7 +155,7 @@ if(isset($_POST['resetMail'])){
 </head>
 <body>
     <!--title1-->
-    <h1 class="leTitre">Change your password</h1>
+    <h1 class="leTitre">Change your password ?</h1>
     <form action="" method="POST">
         <input type="mail" class="inptMail" name="monMail" placeholder="Enter your email">
         <input type="password" class="inptoldPwd" name="oldPassWord" placeholder="Enter your old password"><br><br>
@@ -165,20 +165,14 @@ if(isset($_POST['resetMail'])){
     </form>
 
     <!--title2-->
-    <h1 class="leTitre">Forgot your password</h1>
+    <h1 class="leTitre">Forgot your password ?</h1>
     <form action="" method="POST">
         <input type="mail" class="sonMail" name="monMail" placeholder="Enter your email">
         <input type="submit" class="leSubMitPwd" name="resetMail" value="New password">
     </form>
-
-    <form action="" method="POST">
-        <a href="../home.php?">Or back to connexion</a>
-        <!--<input type="submit" class="retourConnex" name="reTourAconnexio" value="Or back to connexion">-->
-        <!--Affichage des messages-->
-        <div class="class">
-            <!--Btn reset-->
-        </div>
-    </form>
+    
+    <?php echo '<a href="index.php">Or back to connexion </a>'; ?>
+        
 </body>
 </html>
 
