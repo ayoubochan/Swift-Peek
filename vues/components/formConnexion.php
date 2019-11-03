@@ -2,8 +2,8 @@
 <div class="connexion-container">
 <form class="form-connexion" action="" method="POST">
 
-  <input class="form-input" type="text" name="monPseudo" placeholder="ID" required>
-  <input class="form-input" type="password" name="monMotDepass" placeholder="Password" required>
+  <input class="form-input" type="text" name="monPseudo" placeholder="ID">
+  <input class="form-input" type="password" name="monMotDepass" placeholder="Password">
   <div class="log-container">
     <input class="log-button" type="submit" name="onEnvoi" value="Login" >
     <input class="log-button" type="submit" name="onSedeconnect" value="Logout" >
