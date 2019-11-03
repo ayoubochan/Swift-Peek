@@ -1,0 +1,42 @@
+<style>
+
+#commSee, #commStop, #userSee, #UserStop{
+border : 2px solid white ;
+border-radius : 5px;
+background-color : rgb(29, 29, 29);
+color : white;
+font-family : "Arial";
+font-size : 13pt;
+font-weight : bold;
+padding : 7px 15px 7px 15px;
+}
+.seeThem{
+background-color : rgb(180, 21, 21);
+padding : 10px;
+}
+#commentdelete, #userdelete{
+border : 2px solid rgb(150, 150, 150) ;
+border-radius : 5px;
+background-color : rgb(29, 29, 29);
+color : white;
+font-family : "Arial";
+font-size : 12pt;
+padding : 5px 15px 5px 15px;
+
+}
+
+
+.admforComms, .admforUsers{
+    background-color : ghostwhite;
+    padding : 10px;
+}
+#Admid, #Admdate, #Admpseudo, #Admmovie, #Admcomment, #userid, #userpseudal,#usermdp,#usermail{
+border : 1px solid black ;
+border-radius : 3px;
+background-color : white;
+color : black;
+font-family : "Arial";
+font-size : 11pt;
+padding : 3px;
+}
+</style>
