@@ -40,7 +40,8 @@ function verifyUserData($db){
                 if(($_POST['monMotDepass']) == $resultat['password']){
 
                      //$_SESSION['id'] = $resultat['id'];
-                     $_SESSION['pseudo'] = $monPseudo;
+										 $_SESSION['pseudo'] = $monPseudo;
+										 echo 'OOKKKKKKKKKKKKKKKKKKKKKKKKKKKK';
                      return $_SESSION['pseudo'].' '.','.'You are connected.';
                     
                    
