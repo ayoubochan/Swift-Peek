@@ -1,6 +1,5 @@
 
 <?php
-
 //Veux être sur d'être connecté à la base de donnée
 try{
     $db = new PDO('mysql:host=localhost;dbname=swift_peek;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -38,7 +37,7 @@ function verifyUserData($db){
 
                 //Ouverture de la session SI le mot de passe est correct.
                 if(($_POST['monMotDepass']) == $resultat['password']){
-
+                     //session_start();
                      //$_SESSION['id'] = $resultat['id'];
                      $_SESSION['pseudo'] = $monPseudo;
                      return $_SESSION['pseudo'].' '.','.'You are connected.';
@@ -84,10 +83,10 @@ if(isset($_POST['lostPassWord'])){
 //Commentaire dans la bdd
     function sendComment($db){
     if(isset($_POST['sendcomment'])){
-        if(isset($_SESSION['pseudo']) && isset($_POST['addcomment'])){
+        if(isset($_POST['addpseudo']) && isset($_POST['addcomment'])){
             // Insertion du message à l'aide d'une requête préparée
     $req = $db->prepare('INSERT INTO comments (pseudo, comment,movie) VALUES(?, ?,?)');
-    $req->execute(array( $_SESSION['pseudo'], $_POST['addcomment'], $_REQUEST['i']));
+    $req->execute(array($_POST['addpseudo'], $_POST['addcomment'], $_REQUEST['i']));
         
         }
         
@@ -104,6 +103,7 @@ if(isset($_POST['lostPassWord'])){
     {
     echo htmlspecialchars($donnees['pseudo'])."<br>";
     echo htmlspecialchars($donnees['date'])."<br>"; 
+    echo htmlspecialchars($donnees['movie'])."<br>";
     echo htmlspecialchars($donnees['comment'])."<br><br>"; 
 
     }
