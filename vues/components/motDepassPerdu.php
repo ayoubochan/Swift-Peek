@@ -170,8 +170,6 @@ if(isset($_POST['resetMail'])){
         <input type="mail" class="sonMail" name="monMail" placeholder="Enter your email">
         <input type="submit" class="leSubMitPwd" name="resetMail" value="New password">
     </form>
-    
-    <?php echo '<a href="index.php">Or back to connexion </a>'; ?>
         
 </body>
 </html>
