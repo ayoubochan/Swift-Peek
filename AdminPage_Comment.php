@@ -82,6 +82,6 @@ $userAdm->closeCursor(); // Termine le traitement de la requête
         echo "";
     }
     ?>
-   
+   <a href="index.php">Back</a>
 
 
