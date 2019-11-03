@@ -69,7 +69,7 @@ if(isset($_POST['resetMail'])){
 
         //Est-ce que le mail existe dans la database ?
         if($resultat[0] > 0){
-            function generatePassword($size=6){
+            function generatePassword($size=10){
                 $passwd = strtolower(md5(uniqid(rand())));
                 $passwd = substr($passwd,2,$size);
                 $passwd = strtr(
@@ -80,15 +80,47 @@ if(isset($_POST['resetMail'])){
                 return $passwd;
             }
 
-            for ($i=1 ; $i < 5 ; $i++) {
+            for ($i=1 ; $i < 10 ; $i++) {
                 $newPassword = generatePassword();
             }
             
             //Envoi de l'email à l'utilisateur
-            $to = $_POST['monMail'];
-            $ubject = 'Recovery lost password';
-            $body ='Dear'.', '.$to.' '.'here your new password'.' '. generatePassword(). '.'.' '.'Remember to change your new password, for a password you can remember easily.';
-            mail($to, $ubject, $body);
+
+            //use PHPMailer\PHPMailer\PHPMailer;
+            require_once 'PHPMailer/PHPMailer.php';
+            require_once 'PHPMailer/SMTP.php';
+            require_once 'PHPMailer/Exception.php'; 
+            require_once 'PHPMailer/class.phpmailer.php';
+            require_once 'PHPMailer/class.smtp.php';
+
+            $mail = new PHPMailer();
+            
+            //SMTP Settings
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'peekswift@gmail.com';
+            $mail->Password = 'SwiftPeek123';
+            $mail->Port = 465;
+            $mail->SMTPSecure = 'ssl';
+
+            //Email Settings
+            $mail->setFrom($_POST['monMail']);
+            $mail->addAddress('peekswift@gmail.com');
+            $mail->Subject = 'Recovery lost password';
+            $mail->Body = 'Dear'.', '.$_POST['monMail'].' '.'here your new password'.':'.' '. generatePassword(). '.'.' '.'Remember to change your new password, for a password you can remember easily.';
+
+            if($mail->Send()){
+                echo 'The email was sent !';
+            }else{
+                echo 'Something went wrong, the email was not sent !';
+            }
+
+
+            //$to = $_POST['monMail'];
+            //$ubject = 'Recovery lost password';
+            //$body ='Dear'.', '.$to.' '.'here your new password'.' '. generatePassword(). '.'.' '.'Remember to change your new password, for a password you can remember easily.';
+            //mail($to, $ubject, $body);
 
             //Mise à jour de la base des données
             $req = $db->prepare('update users set password = :password
@@ -104,11 +136,8 @@ if(isset($_POST['resetMail'])){
     }else{
         //Champ email n'a pas été remplie
         echo 'Please be sure your input email is filled.';
+        
     }
-
-
-
-
 
 }
 
