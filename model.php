@@ -3,7 +3,7 @@
 
 //Veux être sur d'être connecté à la base de donnée
 try{
-    $db = new PDO('mysql:host=localhost;dbname=swift_peek;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    $db = new PDO('mysql:host=localhost;dbname=swift_peek;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 catch (Exception $e){
 die('Erreur : ' .$e->getMessage());
@@ -99,16 +99,19 @@ if(isset($_POST['lostPassWord'])){
     //Récupere toutes les infos de la TABLE comments avec une requete préparée (laisser le prepare, ne pas mettre de query sinon ca fonctionne pas) et va ensuite les afficher en fonction du film
     $reponse = $db->prepare('SELECT * FROM comments WHERE movie = ? ORDER BY date DESC');
     $reponse->execute(array($_REQUEST['i'])); // fait en sorte que les commentaires s'affichent en fonction du film
-    
+    $commentArray = [];
     while ($donnees = $reponse->fetch())
     {
-    echo htmlspecialchars($donnees['pseudo'])."<br>";
-    echo htmlspecialchars($donnees['date'])."<br>"; 
-    echo htmlspecialchars($donnees['comment'])."<br><br>"; 
-
+    array_push($commentArray, 
+    "<li>
+    <p id='pseudo'>". htmlspecialchars($donnees['pseudo']) ."</p>
+    <p id='comment'>". htmlspecialchars($donnees['comment']) ."</p>
+    <p class='date'>". str_replace(" ", " | ", substr(htmlspecialchars($donnees['date']), 0, 16)) ."</p>
+    </li>"
+    );
     }
     $reponse->closeCursor(); // Termine le traitement de la requête
-
+    return $commentArray;
     }
 
        // partie fred inscription base de donnée 

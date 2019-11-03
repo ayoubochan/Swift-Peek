@@ -14,18 +14,35 @@
 
   <?php
     include 'components/headerDetail.php';
-    include 'vues/components/Back-button.php';
-    include 'components/comment_section.php';
   ?>
+<section class="main-container">
+  <div class="description-container">
+  <ul>
+    <li id="date"></li>
+    <li class="separation"></li>
+    <li id="duration"></li>
+    <li class="separation"></li>
+    <li id="genre"></li>
+  </ul>
 
-<ul>
-<li id="date"></li>
-<li id="duration"></li>
-</ul>
+  <p id="producer"></p>
+  <p id="actor"></p>
+  <p id="description" ></p>
+  </div>
 
-<p id="producer"></p>
-<p id="actor"></p>
-<p id="description" ></p>
+  <?php
+      include 'components/comment_section.php';
+    ?>
+
+    <ul id="comment-list">
+      <?php 
+      for($i = 0; $i < sizeof(showComment($db)); $i++) {
+        echo showComment($db)[$i];
+      }
+      ?>
+
+    </ul>
+</section>
 
   <script>
     const header = document.querySelector('.detail-header')
@@ -44,6 +61,10 @@
     const producer = document.getElementById("producer");
     const actor = document.getElementById("actor");
     const description = document.getElementById("description");
+    const genre = document.getElementById('genre')
+    const commentList = document.getElementById('comment-list')
+    const title = document.getElementById('title')
+    
 
     function getMovie() {
       fetch(`https://api.themoviedb.org/3/movie/<?php echo $_REQUEST['i']; ?>?api_key=b53ba6ff46235039543d199b7fdebd90&language=en-US`)
@@ -160,9 +181,11 @@
     }
     
     function showDescription(movie){
-     date.textContent = "Release Date : "+movie.release_date;
-     duration.textContent = "Duration : "+movie.runtime+" minutes.";
-     description.textContent = movie.tagline + movie.overview;
+     date.innerHTML = `<b>${movie.release_date}</b>`;
+     duration.innerHTML = `<b>${movie.runtime} mins</b>`;
+     genre.innerHTML = `<b>${movie.genres[0].name}</b>`
+     description.textContent = movie.overview;
+     title.textContent = movie.title;
     }
 
     function getCredit(){
@@ -171,9 +194,9 @@
     .then(data=>{
       console.log(data);
       let prod = data.crew.filter(elem => elem.job === 'Producer')[0].name;
-      producer.textContent = "Producer : "+prod;
+      producer.innerHTML = "<b>Producer : </b>"+prod;
       let act = data.cast.filter(elem => elem.order === 0)[0].name; 
-      actor.textContent="Actors : " + act
+      actor.innerHTML="<b>Main actor : </b>" + act
     });
     }
     getCredit();
