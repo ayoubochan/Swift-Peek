@@ -2,7 +2,7 @@
  
 if(isset($_SESSION['pseudo'])){
  $itsConnect =  $_SESSION['pseudo'];
-
+echo 'GGGGGGGGGGGGGGGGGGGGGGGGGGGGG';
 ?>
 <section class="ajoutcomms"> 
   <form method="post" id="sendCommentaryForm">
@@ -12,5 +12,5 @@ if(isset($_SESSION['pseudo'])){
   </form>
 </section>
 <?php 
-}
+} else {echo 'SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS';}
 ?>
