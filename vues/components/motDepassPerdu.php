@@ -154,6 +154,7 @@ if(isset($_POST['resetMail'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="vues/css/recoveryMdp.css">
     <title>Changermot de passe et Mot de passe perdu</title>
 </head>
 <body>
