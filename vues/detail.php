@@ -32,6 +32,7 @@
 
   <?php
       include 'components/comment_section.php';
+      sendComment($db);
     ?>
 
     <ul id="comment-list">
@@ -65,7 +66,7 @@
     const commentList = document.getElementById('comment-list')
     const title = document.getElementById('title')
     
-
+    // Use ID movie in URL to fetch a particular movie
     function getMovie() {
       fetch(`https://api.themoviedb.org/3/movie/<?php echo $_REQUEST['i']; ?>?api_key=b53ba6ff46235039543d199b7fdebd90&language=en-US`)
       .then(response  =>  response.json())
@@ -104,6 +105,7 @@
       video.src = `https://www.youtube.com/embed/${teaser}?enablejsapi=1&html5=1&mute=1&autoplay=1`
     }
 
+    // Import youtube API script
     var tag = document.createElement('script');
     tag.src = "//www.youtube.com/player_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -121,6 +123,7 @@
       }
     }
 
+    // Handle video state and css animations
     function onPlayerReady(event) {
       player.pauseVideo()
       loading.style.opacity = '0'

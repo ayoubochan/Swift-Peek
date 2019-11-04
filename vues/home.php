@@ -9,7 +9,11 @@
   <title>Document</title>
 </head>
 <body id="body">
+<<<<<<< HEAD
 <a href="AdminPage_Comment.php">To Admin Page Here !</a>
+=======
+<a class="admin" href="AdminPage_Comment.php">Admin</a>
+>>>>>>> cb404d262d6a9357c53bf97be23a04b969329ce3
   <?php
     include 'components/headerHome.php';
   ?>
@@ -48,6 +52,7 @@
   const header = document.querySelector('#header')
   const body = document.querySelector('#body')
 
+  // Event for 100vh scroll down
   body.onscroll = () => {
     body.style.transform = 'translate(0, -50%)'
     connexion.style.transform = 'translate(0, 100vh)'
@@ -65,6 +70,7 @@
   }
   getBackground()
 
+  // Handle form connexion and registration css
   switchConnexion.onclick = () => {
     formConnexion.style.zIndex = '-1'
     formRegister.style.zIndex = '3'
@@ -87,6 +93,7 @@
 
   }
 
+  // Create list of all genres in Select element
   function getGenres() {
     fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=b53ba6ff46235039543d199b7fdebd90&language=en-US')
     .then(response => response.json())
@@ -101,6 +108,7 @@
   }
   getGenres()
 
+  // Pass the next page to fetch and stop fetch if last page
   function handleApi() {
       page ++
       callApi(page)
@@ -108,6 +116,7 @@
   }
   let delay = setInterval(handleApi, 300);
 
+  // Redifince fetch method to prevent Errors causing by multiple fetch
   const fetchWithTimeout = (uri, options = {}, time = 5000) => {
     const controller = new AbortController()
     const config = { ...options, signal: controller.signal }
@@ -129,6 +138,7 @@
       })
     }
 
+
     function callApi() {
       fetchWithTimeout(
       `https://api.themoviedb.org/3/discover/movie?api_key=b53ba6ff46235039543d199b7fdebd90&language=en-US&page=${page}`,
@@ -137,8 +147,10 @@
       )
       .then(response => response.json())
       .then(json => {
+        // Add all movies into one array
         movies = movies.concat(json.results)
         showMovies(movies)
+        // Event for filter by search
         search.onkeyup = (e) => {
           list.innerHTML = ''
           searchValue = e.target.value
@@ -146,6 +158,7 @@
           saveLimit = 1
           if(page === 500)showMovies(movies)
         }
+        // Change genre value on select
         genres.onchange = () => {
           saveGenre = genres.options[genres.selectedIndex].value
           list.innerHTML = ''
@@ -154,6 +167,7 @@
           saveLimit = 1
           if(page === 500)showMovies(movies)
         }
+        // Handle slice value to load more movies on scroll
         list.onscroll = (e) => {
           if((list.scrollTop + list.offsetHeight) >= (list.scrollHeight - 500)) {
             if(saveGenre !== '') {
@@ -177,9 +191,11 @@
 
   function showMovies(movies) {
     if(limit !== saveLimit) {
+      // Conditions that verify if there's a filter to apply
       (saveGenre == '' ? '' : movies = movies.filter(elem => elem.genre_ids.includes(parseInt(saveGenre))));
       (searchValue == '' ? '' : movies = movies.filter(elem => elem.title.toLowerCase().includes(searchValue.toLowerCase())));
       saveLimit = limit
+      // create movie list with map method
       const movieList = movies.slice(limit, limit + 20).map((elem, index) => {
       if(elem.poster_path !== null) {
         const img = document.createElement('img')
@@ -188,6 +204,7 @@
         li.appendChild(img)
         img.src = `https://image.tmdb.org/t/p/w200/${elem.poster_path}`
 
+        // Send movie ID to detail page for another fetch on it
         li.onclick = () => {
           search.value = ''
           var xmlhttp = new XMLHttpRequest();

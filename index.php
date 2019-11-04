@@ -1,5 +1,7 @@
 <?php
 
+// Choose the right page to show
+
 include 'controllers.php';
 
 switch(true) {

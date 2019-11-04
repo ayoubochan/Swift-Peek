@@ -113,6 +113,7 @@ body::-webkit-scrollbar {
 
 header {
   height: 100vh;
+  background-color: rgb(20, 20, 20);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   position: relative;
@@ -249,6 +250,10 @@ section {
   height: 30px;
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
+  text-decoration: none;
+  width: 164px;
+  text-align: center;
+  line-height: 30px;
 }
 
 .switch-connexion {
@@ -295,4 +300,15 @@ section {
   width: 164px;
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
+}
+
+.admin {
+  text-decoration: none;
+  color: white;
+  position: absolute;
+  bottom: 0;
+}
+
+.admin:visited {
+  color:inherit;
 }

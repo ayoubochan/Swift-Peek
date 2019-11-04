@@ -1,4 +1,7 @@
 <?php
+
+// Take all users and comments from the DB to handle them on admin interface
+
 try{
     $db = new PDO('mysql:host=localhost;dbname=swift_peek;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
@@ -16,7 +19,7 @@ include 'vues/css/adminpage.css'
 
 <?php
 if(isset($_POST['CommSee'])){
-//Prendre les commentaires pour la page Admin
+
 $commAdm=$db->query('SELECT * FROM comments ORDER BY pseudo');    
 while ($Admcomms = $commAdm->fetch()){
 ?>
@@ -32,7 +35,7 @@ while ($Admcomms = $commAdm->fetch()){
 
 <?php
 }
-$commAdm->closeCursor(); // Termine le traitement de la requête
+$commAdm->closeCursor();
 }
      
     if ( isset($_POST['commentdelete'])) {
@@ -52,9 +55,8 @@ $commAdm->closeCursor(); // Termine le traitement de la requête
 </form>
 
 <?php
-// Admin USERS
+
 if(isset($_POST['userSee'])){
-    //Prendre les commentaires pour la page Admin
     $userAdm=$db->query('SELECT * FROM users ORDER BY pseudo');    
     while ($Admuser = $userAdm->fetch()){
     ?>
@@ -69,7 +71,7 @@ if(isset($_POST['userSee'])){
 
     <?php
 }
-$userAdm->closeCursor(); // Termine le traitement de la requête
+$userAdm->closeCursor();
 }
      
     if ( isset($_POST['userdelete'])) {
@@ -82,6 +84,6 @@ $userAdm->closeCursor(); // Termine le traitement de la requête
         echo "";
     }
     ?>
-   
+   <a href="index.php">Back</a>
 
 
