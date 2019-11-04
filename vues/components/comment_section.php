@@ -1,8 +1,7 @@
 <?php
  
-if(isset($_SESSION['pseudo'])){
-  echo "you are connected : ".$_SESSION['pseudo'];
-
+if(empty($_SESSION['pseudo'])){
+}else{
 ?>
 <section class="ajoutcomms"> 
   <form method="post" id="sendCommentaryForm">

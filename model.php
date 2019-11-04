@@ -52,15 +52,7 @@ function verifyUserData($db){
    
                 }
 
-                //Le boutton déconnexion
-                if(isset($_POST['onSedeconnect'])){
-                    session_destroy();
-                    if(empty($_SESSION['pseudo'])){
-                    $ilEstDeconnect = 'You are disconnected';
-                    return $ilEstDeconnect;
-                    var_dump($ilEstDeconnect);
-                    }
-                }
+               
 
         }else{
             //Message erreur si les champs sont vide
@@ -69,7 +61,13 @@ function verifyUserData($db){
 
         }
     }
-
+ //Le boutton déconnexion
+ if(isset($_POST['onSedeconnect'])){
+                
+    $_SESSION['pseudo']="";
+    echo "vs etres deco";
+    
+}
 }
 
 //Lien menant vers la page motDepassPerdu
