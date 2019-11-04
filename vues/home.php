@@ -9,11 +9,7 @@
   <title>Document</title>
 </head>
 <body id="body">
-<<<<<<< HEAD
-<a href="AdminPage_Comment.php">To Admin Page Here !</a>
-=======
 <a class="admin" href="AdminPage_Comment.php">Admin</a>
->>>>>>> cb404d262d6a9357c53bf97be23a04b969329ce3
   <?php
     include 'components/headerHome.php';
   ?>
