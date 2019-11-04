@@ -20,7 +20,7 @@ Servez-vous des filtres pour retrouver un film plus facilement !
 * themovieDB API
 * Youtube API
 
-#Dev Team
+# Dev Team
 * **Adam Loukili**
 * **Moise Nsengiyumva**
 * **Freddy Matime**
