@@ -16,6 +16,9 @@ function detail(){
   include 'vues/detail.php';
 }
 
+function cart() {
+  include 'vues/cart.php';
+}
 
 ?>
 
