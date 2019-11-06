@@ -13,9 +13,13 @@ function home(){
 
 function detail(){
   include 'model.php';
+  include 'session.php';
   include 'vues/detail.php';
 }
 
+function cart() {
+  include 'vues/cart.php';
+}
 
 ?>
 

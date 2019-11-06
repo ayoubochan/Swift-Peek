@@ -26,8 +26,13 @@
   </ul>
 
   <p id="producer"></p>
+  <form action="" method="POST"><button type="submit" name="add">Add</button></form>
   <p id="actor"></p>
-  <p id="description" ></p>
+  <p id="description"></p>
+  <?php
+  print_r($_SESSION['shop']);
+  addSession();
+  ?>
   </div>
 
   <?php

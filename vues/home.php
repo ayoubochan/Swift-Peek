@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://kit.fontawesome.com/7b840f6fa2.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="vues/css/home.css">
   <title>Document</title>
 </head>
@@ -41,6 +42,7 @@
   let searchValue = ''
   const connexion = document.querySelector('.connexion')
   const formConnexion = document.querySelector('.connexion-container')
+  const shopButton = document.querySelector('.shop-button')
   const formRegister = document.querySelector('.register-container')
   const switchConnexion = document.querySelector('#switch-connexion')
   const switchRegister = document.querySelector('#switch-register')
@@ -52,6 +54,7 @@
   body.onscroll = () => {
     body.style.transform = 'translate(0, -50%)'
     connexion.style.transform = 'translate(0, 100vh)'
+    shopButton.style.transform = 'translate(0, 100vh)'
     formConnexion.style.transform = 'translate(0, 100vh)'
     formRegister.style.transform = 'translate(0, 100vh)'
   }

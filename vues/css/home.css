@@ -312,3 +312,19 @@ section {
 .admin:visited {
   color:inherit;
 }
+
+.shop-button {
+  border : none;
+  color : white;
+  background-color: transparent;
+  position: fixed;
+  top: 40px;
+  right: 200px;
+  transform: translate(0, 0);
+  transition: transform 500ms ease-in-out;
+}
+
+.shop-button:hover {
+  transform : scale(1.1);
+  cursor : pointer;
+}
