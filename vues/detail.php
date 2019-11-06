@@ -26,8 +26,15 @@
   </ul>
 
   <p id="producer"></p>
+  <form action="" method="POST"><button type="submit" name="add">Add</button></form>
+  <form action="" method="POST"><button type="submit" name="delete">Delete</button></form>
   <p id="actor"></p>
   <p id="description" ></p>
+  <?php echo isset($_COOKIE['movies_id']) ? $_COOKIE['movies_id'] : 'no';?>
+  <?=$_REQUEST['i']?>
+  <?php
+  addCookie();
+  ?>
   </div>
 
   <?php

@@ -2,7 +2,7 @@
     if (!empty($_COOKIE['movies_id'])) {
         $affichage = 
         '<tr style="height: 100px;">
-            <td class="align-middle">'.$_COOKIE['movie_id'].'<button type="submit" class="btn btn-danger ml-5">Remove</button></td>
+            <td class="align-middle">'.($_COOKIE['movies_id']).'<button type="submit" class="btn btn-danger ml-5">Remove</button></td>
             <td class="align-middle text-center">10€</td>
             <td class="align-middle text-center">1</td>
             <td class="align-middle text-right">10€</td>
