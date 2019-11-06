@@ -13,7 +13,7 @@ function home(){
 
 function detail(){
   include 'model.php';
-  include 'cookiess.php';
+  include 'session.php';
   include 'vues/detail.php';
 }
 
