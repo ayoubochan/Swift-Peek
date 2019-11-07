@@ -27,7 +27,7 @@
   </ul>
 
   <p id="producer"></p>
-  <form action="" method="POST"><button class="button-buy" type="submit" name="add" id="add"><h2>Buy</h2></button></form>
+  <!--<form action="" method="POST"><button class="button-buy" type="submit" name="add" id="add"><h2>Buy</h2></button></form>-->
   <p id="actor"></p>
   <p id="description"></p>
   <?php
