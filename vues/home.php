@@ -52,6 +52,7 @@
 
   // Event for 100vh scroll down
   body.onscroll = () => {
+    shopButton.style.zIndex = '5'
     body.style.transform = 'translate(0, -50%)'
     connexion.style.transform = 'translate(0, 100vh)'
     shopButton.style.transform = 'translate(0, 100vh)'
