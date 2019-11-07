@@ -12,4 +12,5 @@
     <div class="top"></div>
     <div class="bottom"></div>
     <div class="left"></div>
-  </button>
+  </button> 
+  <form action="" method="POST"><button class="button-buy" type="submit" name="add" id="add">Buy</button></form>
