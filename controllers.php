@@ -18,7 +18,12 @@ function detail(){
 }
 
 function cart() {
+  include 'cartModel.php';
   include 'vues/cart.php';
+}
+
+function checkout() {
+  include 'vues/buy_confirm.php';
 }
 
 ?>

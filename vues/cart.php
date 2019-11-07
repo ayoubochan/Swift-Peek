@@ -1,18 +1,3 @@
-<?php
-    if (!empty($_SESSION['shop'])) {
-        $affichage = "";
-        foreach ($_SESSION['shop'] as $key=>$value) {
-        $affichage .= 
-        '<tr style="height: 100px;">
-            <td class="align-middle">'.$key.'<button type="submit" class="btn btn-danger ml-5">Remove</button></td>
-            <td class="align-middle text-center">10€</td>
-            <td class="align-middle text-center">'.$value.'</td>
-            <td class="align-middle text-right">10€</td>
-        </tr>';
-        }
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +17,6 @@
                     <th style="border-top:none;" scope="col">Product</th>
                     <th style="border-top:none;" scope="col" class="text-center">Price</th>
                     <th style="border-top:none;" scope="col" class="text-center">Quantity</th>
-                    <th style="border-top:none;" scope="col" class="text-right">Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,10 +26,59 @@
     </div>
     <div class="row d-flex justify-content-end">
         <div class="d-flex flex-column justify-content-center">
-            <p>Total : </p>
-            <button class="btn btn-secondary">CHECK OUT</button>
+            <p id="total"></p>
+            <form method="POST">
+                <button class="btn btn-secondary" name="checkout" id="checkout">CHECK OUT</button>
+            </form>
         </div>
     </div>
     </div>
 </body>
 </html>
+
+<script>
+let input = document.getElementsByTagName('input')
+let arrayTotal = []
+function defineArray() {
+    arrayTotal = []
+    for(let i = 0; i < input.length; i++) {
+    arrayTotal.push(input[i].value)
+    input[i].onchange = () => {
+        showTotal()
+    }
+}
+return arrayTotal
+}
+
+defineArray()
+
+let total = 0
+function defineTotal() {
+    total = 0
+    defineArray().map((elem, index) => {
+        total += parseInt(elem)
+        
+})
+return total
+}
+
+function showTotal() {
+        document.getElementById('total').textContent = `Total : ${defineTotal() * 10}€`
+        document.getElementById('checkout').value = defineTotal()
+}
+showTotal()
+
+
+/*for (let i=0; i<input.length; i++) {
+    total = parseInt(input[i].value)
+    saveTotal = total
+    input[i].addEventListener('change', function(e) {
+        console.log(5, e.target.value, total)
+        total = ((total + parseInt(e.target.value)) - saveTotal)
+        saveTotal = total
+        document.getElementById('total').textContent = `Total : ${total}`
+    })
+    
+}*/
+//document.getElementById('total').textContent = `Total : ${total}`
+</script>

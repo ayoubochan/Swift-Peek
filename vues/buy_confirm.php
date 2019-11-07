@@ -12,12 +12,12 @@ if (isset($_POST['ville'])) {
 if (isset($_POST['pays'])) {
     $_SESSION['form_buy']['pays']=$_POST['pays'];
 }
-if (isset($_COOKIE['quantite'])) {
-    $quantite = $_COOKIE["quantite"];
+if (isset($_POST['checkout'])) {
+    $quantite = $_POST['checkout'];
 } else {
     $quantite = 0;
 }
-//print_r ($_SESSION['form_buy']);
+print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ if (isset($_COOKIE['quantite'])) {
 </head>
 <body onload="calculFraisTotal()">
     <div class="container">
-        <form method="POST" action="">
+        <form method="POST" action="vues/buy_confirm.php">
             
             <label for="nbreFilms">Nombre de films</label>
             <input class="form-control" id="nbreFilms" type="text" value="<?php echo $quantite; ?>" onchange="calculFraisTotal()" disabled/>

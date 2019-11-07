@@ -1,5 +1,4 @@
 <?php
-
 // Choose the right page to show
 
 include 'controllers.php';
@@ -16,9 +15,13 @@ include 'controllers.php';
 if (isset($_REQUEST['i'])) {
   detail();
 } else {
-  if (isset($_REQUEST['cart'])) {
+  if (isset($_POST['cart']) || isset($_POST['remove']) || isset($_POST['checkout']) && empty($_SESSION['pseudo'])) {
   cart();
-  } else {
+  } 
+  else if (isset($_POST['checkout']) && !empty($_SESSION['pseudo'])) {
+    checkout();
+    }
+  else {
     home();
   }
 }

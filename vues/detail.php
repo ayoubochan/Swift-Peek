@@ -26,11 +26,10 @@
   </ul>
 
   <p id="producer"></p>
-  <form action="" method="POST"><button type="submit" name="add">Add</button></form>
+  <form action="" method="POST"><button type="submit" name="add" id="add">Add</button></form>
   <p id="actor"></p>
   <p id="description"></p>
   <?php
-  print_r($_SESSION['shop']);
   addSession();
   ?>
   </div>
@@ -82,7 +81,7 @@
       })
     }
     getMovie()
-
+    var movieImage = 'https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path}';
     function showMovie(movie) {
       header.style.backgroundImage = `url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`
       header.style.animation = 'show 1s ease-in forwards'
@@ -194,6 +193,7 @@
      genre.innerHTML = `<b>${movie.genres[0].name}</b>`
      description.textContent = movie.overview;
      title.textContent = movie.title;
+     document.getElementById('add').value = movie.title;
     }
 
     function getCredit(){
