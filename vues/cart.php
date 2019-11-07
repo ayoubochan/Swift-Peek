@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="vues/css/cart.css">
+    <script src="https://kit.fontawesome.com/7b840f6fa2.js" crossorigin="anonymous"></script>
     <title>Shopping cart</title>
 </head>
 <body>
     <?=$message?>
-    <a href="index.php"><img class="ml-3 mt-2" src="assets/backV2.png"/></a>
+    <a href="index.php"><i class="fas fa-chevron-left fa-3x ml-3" id="cart-arrow"></i></a>
     <h3 class="text-center mt-3">Your cart</h3>
     <div class="container">
     <div class="row">
