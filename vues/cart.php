@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="vues/css/cart.css">
     <title>Shopping cart</title>
 </head>
 <body>
+    <?=$message?>
+    <a href="index.php"><img class="ml-3 mt-2" src="assets/backV2.png"/></a>
     <h3 class="text-center mt-3">Your cart</h3>
     <div class="container">
     <div class="row">
@@ -28,7 +31,7 @@
         <div class="d-flex flex-column justify-content-center">
             <p id="total"></p>
             <form method="POST">
-                <button class="btn btn-secondary" name="checkout" id="checkout">CHECK OUT</button>
+                <button class="btn btn-checkout" name="checkout" id="checkout">CHECK OUT</button>
             </form>
         </div>
     </div>

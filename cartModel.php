@@ -13,5 +13,8 @@
         </tr>';
         }
     }
+
+    $message = empty($_SESSION['pseudo']) ? '<div class="alert alert-danger" role="alert">
+    You need to log in to proceed the shopping ;-) </div>' : ""
 ?>
 
