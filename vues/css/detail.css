@@ -314,3 +314,7 @@ body {
   padding: 20px 20px 20px 20px;
   border-radius: 5px;
 }
+
+#detail-arrow {
+  color : white;
+}

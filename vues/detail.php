@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="vues/css/detail.css">
+  <script src="https://kit.fontawesome.com/7b840f6fa2.js" crossorigin="anonymous"></script>
   <title>Document</title>
 </head>
 <body>
