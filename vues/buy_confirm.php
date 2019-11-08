@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+//session_start(); 
 if (isset($_POST['nom'])) {
     $_SESSION['form_buy']['nom']=$_POST['nom'];
 }
