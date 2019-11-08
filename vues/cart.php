@@ -21,6 +21,7 @@
                     <th style="border-top:none;" scope="col">Product</th>
                     <th style="border-top:none;" scope="col" class="text-center">Price</th>
                     <th style="border-top:none;" scope="col" class="text-center">Quantity</th>
+                    <th style="border-top:none;" scope="col" class="text-center">Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,8 +31,8 @@
     </div>
     <div class="row d-flex justify-content-end">
         <div class="d-flex flex-column justify-content-center">
-            <p id="total"></p>
-            <form method="POST">
+            <h3 id="total"></h3>
+            <form method="POST" class="mt-3">
                 <button class="btn btn-checkout" name="checkout" id="checkout">CHECK OUT</button>
             </form>
         </div>
@@ -42,6 +43,7 @@
 
 <script>
 let input = document.getElementsByTagName('input')
+let itemTotal = document.getElementsByClassName('itemTotal')
 let arrayTotal = []
 function defineArray() {
     arrayTotal = []
@@ -57,9 +59,12 @@ return arrayTotal
 defineArray()
 
 let total = 0
+let arrayItem = []
 function defineTotal() {
     total = 0
+    arrayItem = []
     defineArray().map((elem, index) => {
+        arrayItem.push(parseInt(elem))
         total += parseInt(elem)
         
 })
@@ -68,10 +73,12 @@ return total
 
 function showTotal() {
         document.getElementById('total').textContent = `Total : ${defineTotal() * 10}€`
+        for (let j=0; j<itemTotal.length; j++) {
+            itemTotal[j].textContent = `${arrayItem[j] * 10}€`
+        }
         document.getElementById('checkout').value = defineTotal()
 }
 showTotal()
-
 
 /*for (let i=0; i<input.length; i++) {
     total = parseInt(input[i].value)
