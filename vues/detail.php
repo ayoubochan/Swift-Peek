@@ -81,8 +81,8 @@
         showDescription(data);
       })
     }
+    var session = []
     getMovie()
-    var movieImage = 'https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path}';
     function showMovie(movie) {
       header.style.backgroundImage = `url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`
       header.style.animation = 'show 1s ease-in forwards'
@@ -194,7 +194,10 @@
      genre.innerHTML = `<b>${movie.genres[0].name}</b>`
      description.textContent = movie.overview;
      title.textContent = movie.title;
-     document.getElementById('add').value = movie.title;
+     session.push(movie.title)
+     let path = "https://image.tmdb.org/t/p/w1400_and_h450_bestv2" + movie.backdrop_path
+     session.push(path)
+     document.getElementById('add').value = session
     }
 
     function getCredit(){
