@@ -1,9 +1,9 @@
 <?php
+    $affichage = "";
     if (!empty($_SESSION['shop'])) {
         if (isset($_POST['remove'])) {
             unset($_SESSION['shop'][$_POST['remove']]);
         }
-        $affichage = "";
         foreach ($_SESSION['shop'] as $key=>$value) {
         $affichage .= 
         '<tr style="height: 100px;">

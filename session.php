@@ -2,7 +2,7 @@
 function addSession() {
     if (isset($_POST['add'])) {
         if (isset($_SESSION['shop'])) {
-            if ($_SESSION['shop'][$_POST['add']] != null) {
+            if (!isset($_SESSION['shop'][$_POST['add']])) {
                 $_SESSION['shop'][$_POST['add']] ++;
             } else {
                 $_SESSION['shop'][$_POST['add']] = 1;
