@@ -6,6 +6,7 @@
   <img class="arrow-down" src="assets/arrow-down.gif">
   <?php
     include 'formConnexion.php';
-    include 'formRegister.php'
+    include 'formRegister.php';
+    include 'button.php';
   ?>
 </header>

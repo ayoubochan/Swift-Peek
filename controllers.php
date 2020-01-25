@@ -13,9 +13,18 @@ function home(){
 
 function detail(){
   include 'model.php';
+  include 'session.php';
   include 'vues/detail.php';
 }
 
+function cart() {
+  include 'cartModel.php';
+  include 'vues/cart.php';
+}
+
+function checkout() {
+  include 'vues/buy_confirm.php';
+}
 
 ?>
 

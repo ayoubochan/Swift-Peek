@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="vues/css/detail.css">
+  <script src="https://kit.fontawesome.com/7b840f6fa2.js" crossorigin="anonymous"></script>
   <title>Document</title>
 </head>
 <body>
@@ -26,8 +27,12 @@
   </ul>
 
   <p id="producer"></p>
+  <!--<form action="" method="POST"><button class="button-buy" type="submit" name="add" id="add"><h2>Buy</h2></button></form>-->
   <p id="actor"></p>
-  <p id="description" ></p>
+  <p id="description"></p>
+  <?php
+  addSession(); 
+  ?>
   </div>
 
   <?php
@@ -76,8 +81,8 @@
         showDescription(data);
       })
     }
+    var session = []
     getMovie()
-
     function showMovie(movie) {
       header.style.backgroundImage = `url(https://image.tmdb.org/t/p/w1400_and_h450_bestv2${movie.backdrop_path})`
       header.style.animation = 'show 1s ease-in forwards'
@@ -189,6 +194,10 @@
      genre.innerHTML = `<b>${movie.genres[0].name}</b>`
      description.textContent = movie.overview;
      title.textContent = movie.title;
+     session.push(movie.title)
+     let path = "https://image.tmdb.org/t/p/w1400_and_h450_bestv2" + movie.backdrop_path
+     session.push(path)
+     document.getElementById('add').value = session
     }
 
     function getCredit(){

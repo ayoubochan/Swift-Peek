@@ -1,0 +1,49 @@
+.btn-checkout { 
+    color: #FFFFFF; 
+    background-color: #3A7272; 
+    border-color: #3A7272; 
+} 
+
+.btn-checkout:hover, 
+.btn-checkout:focus, 
+.btn-checkout:active, 
+.btn-checkout.active, 
+.open .dropdown-toggle.btn-checkout { 
+color: #FFFFFF; 
+background-color: #286969; 
+border-color: #3A7272; 
+} 
+
+.btn-checkout:active, 
+.btn-checkout.active, 
+.open .dropdown-toggle.btn-checkout { 
+background-image: none; 
+} 
+
+.btn-checkout.disabled, 
+.btn-checkout[disabled], 
+fieldset[disabled] .btn-checkout, 
+.btn-checkout.disabled:hover, 
+.btn-checkout[disabled]:hover, 
+fieldset[disabled] .btn-checkout:hover, 
+.btn-checkout.disabled:focus, 
+.btn-checkout[disabled]:focus, 
+fieldset[disabled] .btn-checkout:focus, 
+.btn-checkout.disabled:active, 
+.btn-checkout[disabled]:active, 
+fieldset[disabled] .btn-checkout:active, 
+.btn-checkout.disabled.active, 
+.btn-checkout[disabled].active, 
+fieldset[disabled] .btn-checkout.active { 
+background-color: #3A7272; 
+border-color: #3A7272; 
+} 
+
+.btn-checkout .badge { 
+color: #3A7272; 
+background-color: #FFFFFF; 
+}
+
+#cart-arrow {
+    color : black;
+}

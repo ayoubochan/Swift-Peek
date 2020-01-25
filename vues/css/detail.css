@@ -86,6 +86,23 @@ body {
   position: absolute;
 }
 
+.button-buy {
+  color: white;
+  position: absolute;
+  background-color: rgb(222, 56, 56);
+  left: 76%;
+  top: 50vh;
+  transform: translate(0, -50%);
+  height: 100px;
+  width: 100px;
+  border: none;
+  border-radius: 100px;
+  box-shadow: 0 0 6px 4px rgba(0, 0, 0, 0.6);
+  outline: none;
+  z-index: 5;
+}
+
+
 .left {
   left: 30%;
   top: 50%;
@@ -296,4 +313,8 @@ body {
   width: calc(80% - 40px);
   padding: 20px 20px 20px 20px;
   border-radius: 5px;
+}
+
+#detail-arrow {
+  color : white;
 }

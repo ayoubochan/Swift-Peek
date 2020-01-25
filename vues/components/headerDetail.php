@@ -3,7 +3,7 @@
       <p id="title"></p>
       <div></div>
     </div>
-    <a href="index.php"><img src="assets/back.png" /></a>
+    <a href="index.php"><i class="fas fa-chevron-left fa-3x" id="detail-arrow"></i></a>
     <div id="background"></div>
     <div id="video-container"><iframe id="video" frameborder="0" allow="autoplay"></iframe></div>
   </header>
@@ -12,4 +12,5 @@
     <div class="top"></div>
     <div class="bottom"></div>
     <div class="left"></div>
-  </button>
+  </button> 
+  <form action="" method="POST"><button class="button-buy" type="submit" name="add" id="add">Buy</button></form>
